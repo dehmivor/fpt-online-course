@@ -5,6 +5,7 @@ import "./styles/main.scss";
 import Notfound from "./pages/errors/Notfound";
 import Layout from "./layouts/Layout";
 import { Helmet } from "react-helmet";
+import CourseMana from "./pages/manage/CourseManage";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Notfound />} />
+            <Route path="/course-mana" element={<CourseMana />} />
           </Routes>
         </BrowserRouter>
       </Layout>
