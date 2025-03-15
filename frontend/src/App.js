@@ -6,6 +6,7 @@ import Notfound from "./pages/errors/Notfound";
 import Layout from "./layouts/Layout";
 import { Helmet } from "react-helmet";
 import CourseMana from "./pages/manage/CourseManage";
+import UserManage from "./pages/manage/UserManage";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Notfound />} />
             <Route path="/course-mana" element={<CourseMana />} />
+            <Route path="/user-mana" element={<UserManage />} />
           </Routes>
         </BrowserRouter>
       </Layout>

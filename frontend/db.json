@@ -1,137 +1,230 @@
 {
-    "training": [
+  "training": [
+    {
+      "id": 1,
+      "title": "Google data Analytics",
+      "img": "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper..",
+      "date": "12 November 2024, 20:00",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "Google",
+        "rate": 4,
+        "totalReview": 150
+      },
+      "categorie": "Programming",
+      "sub_categorie": "Web Development"
+    },
+    {
+      "id": 2,
+      "title": "Cryptocurrency Trading",
+      "img": "https://images.pexels.com/photos/6770770/pexels-photo-6770770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper..",
+      "date": "18 November 2024, 18:00",
+      "trainer": {
+        "img": "https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "name": "Danny Magee",
+        "rate": 3,
+        "totalReview": 38
+      },
+      "categorie": "Business and Finance",
+      "sub_categorie": "Data Analyst"
+    },
+    {
+      "id": 3,
+      "title": "it support specialization",
+      "img": "https://images.pexels.com/photos/8204325/pexels-photo-8204325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper..",
+      "date": "19 November 2024, 19:30",
+      "trainer": {
+        "img": "https://www.svgrepo.com/show/303143/microsoft-logo.svg",
+        "name": "Microsoft",
+        "rate": 4,
+        "totalReview": 84
+      },
+      "categorie": "Communication",
+      "sub_categorie": "It Support"
+    },
+    {
+      "id": 4,
+      "title": "Next.js Crash Course",
+      "img": "https://ih1.redbubble.net/image.4928907793.7534/st,small,507x507-pad,600x600,f8f8f8.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper..",
+      "date": "12 November 2024, 20:00",
+      "trainer": {
+        "img": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "name": "Lori Yates",
+        "rate": 4,
+        "totalReview": 43
+      },
+      "categorie": "Programming",
+      "sub_categorie": "Web Development"
+    }
+  ],
+  "liveSession": {
+    "id": 6,
+    "title": "Career Essentials in Generative AI",
+    "img": "https://images.pexels.com/photos/3756693/pexels-photo-3756693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper.."
+  },
+  "categorie": [
+    {
+      "id": 1,
+      "label": "Technology and Programming",
+      "img": "https://img.freepik.com/free-photo/cyber-security-expert-working-with-technology-neon-lights_23-2151645682.jpg?t=st=1730033118~exp=1730036718~hmac=74905b88512d6805512f73c4d4deee9eed77121a4f3c80c21f9866c436e89f47&w=740"
+    },
+    {
+      "id": 2,
+      "label": "Business and Finance",
+      "img": "https://img.freepik.com/free-photo/businessman-pointing-chart-digital-monitor-generated-by-ai_188544-22442.jpg?t=st=1730031888~exp=1730035488~hmac=4b7810470bb81735aaaa5a2efc51afd81dee3577e95d5f506114a65f72acb8a1&w=826"
+    },
+    {
+      "id": 3,
+      "label": "Creative Arts",
+      "img": "https://img.freepik.com/free-photo/glowing-laptop-wooden-desk-modern-office-abstract-technology-generated-by-artificial-intelligence_24640-131187.jpg?t=st=1730033021~exp=1730036621~hmac=cf4a158b4bf242826fff24e0edf38185276275140bbb5bd236af7714850fd340&w=1380"
+    },
+    {
+      "id": 4,
+      "label": "Language and Communication",
+      "img": "https://img.freepik.com/free-photo/international-day-education-cartoon-style_23-2151007486.jpg?t=st=1730033288~exp=1730036888~hmac=2d2e6323d81723d1fa96babc4f51902d50879bf8e1516751c56042ebe5bd01e9&w=996"
+    },
+    {
+      "id": 5,
+      "label": "Personal Development",
+      "img": "https://img.freepik.com/free-photo/businessman-rocket-concept_23-2150529555.jpg?t=st=1730033056~exp=1730036656~hmac=0f21965e1c1fc2f198b4c0000499bed29a35ba6cc4340eb850d1e680cff01fd0&w=1380"
+    },
+    {
+      "id": 6,
+      "label": "Professional Skills",
+      "img": "https://img.freepik.com/free-photo/businessman-sitting-table-conference-room-business-success-concept_1142-51789.jpg?t=st=1730033407~exp=1730037007~hmac=bb9ed1aec133bcda01a09d62a824da4e0289a6bc8f889e5a7d5ef247fcacdb35&w=740"
+    },
+    {
+      "id": 7,
+      "label": "Science and Mathematics",
+      "img": "https://img.freepik.com/free-photo/view-3d-male-chemist-lab_23-2150710072.jpg?t=st=1730033327~exp=1730036927~hmac=94dba0805a27d9e0d9630fa9278b8301a388e8f28d77c36d4cc9bb2dce4a8216&w=826"
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": 1,
+      "review": 4,
+      "feedback": "Orci vel eget in eu. Integer amet porttitor hendrerit etiam arcu, aliquet duis pretium consequat. Semper sed viverra enim ut nunc",
+      "profile": {
+        "name": "Danny Magee",
+        "img": "https://images.pexels.com/photos/32976/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      }
+    },
+    {
+      "id": 2,
+      "review": 5,
+      "feedback": "Orci vel eget in eu. Integer amet porttitor hendrerit etiam arcu, aliquet duis pretium consequat. Semper sed viverra enim ut nunc",
+      "profile": {
+        "name": "Danny Magee",
+        "img": "https://images.pexels.com/photos/32976/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      }
+    },
+    {
+      "id": 3,
+      "review": 4,
+      "feedback": "Orci vel eget in eu. Integer amet porttitor hendrerit etiam arcu, aliquet duis pretium consequat. Semper sed viverra enim ut nunc",
+      "profile": {
+        "name": "Danny Magee",
+        "img": "https://images.pexels.com/photos/32976/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "stu_001",
+      "name": "Nguyễn Văn A",
+      "email": "nguyenvana@example.com",
+      "password": "$2b$10$hashedpassword",
+      "role": "student",
+      "profile": {
+        "age": 20,
+        "gender": "male",
+        "university": "Đại học Bách Khoa",
+        "major": "Công nghệ thông tin",
+        "year": 3,
+        "gpa": 3.5
+      },
+      "enrolled_courses": [
         {
-            "id": 1,
-            "title": "Google data Analytics",
-            "img": "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper..",
-            "date": "12 November 2024, 20:00",
-            "trainer": {
-                "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
-                "name": "Google",
-                "rate": 4,
-                "totalReview": 150
-            },
-            "categorie": "Programming",
-            "sub_categorie": "Web Development"
+          "course_id": "course_101",
+          "progress": 75,
+          "completed": false
         },
         {
-            "id": 2,
-            "title": "Cryptocurrency Trading",
-            "img": "https://images.pexels.com/photos/6770770/pexels-photo-6770770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper..",
-            "date": "18 November 2024, 18:00",
-            "trainer": {
-                "img": "https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                "name": "Danny Magee",
-                "rate": 3,
-                "totalReview": 38
-            },
-            "categorie": "Business and Finance",
-            "sub_categorie": "Data Analyst"
-        },
-        {
-            "id": 3,
-            "title": "it support specialization",
-            "img": "https://images.pexels.com/photos/8204325/pexels-photo-8204325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper..",
-            "date": "19 November 2024, 19:30",
-            "trainer": {
-                "img": "https://www.svgrepo.com/show/303143/microsoft-logo.svg",
-                "name": "Microsoft",
-                "rate": 4,
-                "totalReview": 84
-            },
-            "categorie": "Communication",
-            "sub_categorie": "It Support"
-        },
-        {
-            "id": 4,
-            "title": "Next.js Crash Course",
-            "img": "https://ih1.redbubble.net/image.4928907793.7534/st,small,507x507-pad,600x600,f8f8f8.jpg",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper..",
-            "date": "12 November 2024, 20:00",
-            "trainer": {
-                "img": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                "name": "Lori Yates",
-                "rate": 4,
-                "totalReview": 43
-            },
-            "categorie": "Programming",
-            "sub_categorie": "Web Development"
+          "course_id": "course_202",
+          "progress": 100,
+          "completed": true
         }
-    ],
-    "liveSession": {
-            "id": 6,
-            "title": "Career Essentials in Generative AI",
-            "img": "https://images.pexels.com/photos/3756693/pexels-photo-3756693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper.."
-        },
-    "categorie": [
+      ],
+      "certificates": [
         {
-            "id": 1,
-            "label": "Technology and Programming",
-            "img": "https://img.freepik.com/free-photo/cyber-security-expert-working-with-technology-neon-lights_23-2151645682.jpg?t=st=1730033118~exp=1730036718~hmac=74905b88512d6805512f73c4d4deee9eed77121a4f3c80c21f9866c436e89f47&w=740"
-        },
-        {
-            "id": 2,
-            "label": "Business and Finance",
-            "img": "https://img.freepik.com/free-photo/businessman-pointing-chart-digital-monitor-generated-by-ai_188544-22442.jpg?t=st=1730031888~exp=1730035488~hmac=4b7810470bb81735aaaa5a2efc51afd81dee3577e95d5f506114a65f72acb8a1&w=826"
-        },
-        {
-            "id": 3,
-            "label": "Creative Arts",
-            "img": "https://img.freepik.com/free-photo/glowing-laptop-wooden-desk-modern-office-abstract-technology-generated-by-artificial-intelligence_24640-131187.jpg?t=st=1730033021~exp=1730036621~hmac=cf4a158b4bf242826fff24e0edf38185276275140bbb5bd236af7714850fd340&w=1380"
-        },
-        {
-            "id": 4,
-            "label": "Language and Communication",
-            "img": "https://img.freepik.com/free-photo/international-day-education-cartoon-style_23-2151007486.jpg?t=st=1730033288~exp=1730036888~hmac=2d2e6323d81723d1fa96babc4f51902d50879bf8e1516751c56042ebe5bd01e9&w=996"
-        },
-        {
-            "id": 5,
-            "label": "Personal Development",
-            "img": "https://img.freepik.com/free-photo/businessman-rocket-concept_23-2150529555.jpg?t=st=1730033056~exp=1730036656~hmac=0f21965e1c1fc2f198b4c0000499bed29a35ba6cc4340eb850d1e680cff01fd0&w=1380"
-        },
-        {
-            "id": 6,
-            "label": "Professional Skills",
-            "img": "https://img.freepik.com/free-photo/businessman-sitting-table-conference-room-business-success-concept_1142-51789.jpg?t=st=1730033407~exp=1730037007~hmac=bb9ed1aec133bcda01a09d62a824da4e0289a6bc8f889e5a7d5ef247fcacdb35&w=740"
-        },
-        {
-            "id": 7,
-            "label": "Science and Mathematics",
-            "img": "https://img.freepik.com/free-photo/view-3d-male-chemist-lab_23-2150710072.jpg?t=st=1730033327~exp=1730036927~hmac=94dba0805a27d9e0d9630fa9278b8301a388e8f28d77c36d4cc9bb2dce4a8216&w=826"
+          "certificate_id": "cert_001",
+          "course_id": "course_202",
+          "issued_date": "2024-01-15"
         }
-    ],
-    "feedbacks": [
+      ],
+      "activity_log": [
         {
-            "id": 1,
-            "review": 4,
-            "feedback": "Orci vel eget in eu. Integer amet porttitor hendrerit etiam arcu, aliquet duis pretium consequat. Semper sed viverra enim ut nunc",
-            "profile": {
-                "name": "Danny Magee",
-                "img": "https://images.pexels.com/photos/32976/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            }
+          "timestamp": "2024-03-15T10:30:00Z",
+          "action": "completed_quiz",
+          "course_id": "course_101"
         },
         {
-            "id": 2,
-            "review": 5,
-            "feedback": "Orci vel eget in eu. Integer amet porttitor hendrerit etiam arcu, aliquet duis pretium consequat. Semper sed viverra enim ut nunc",
-            "profile": {
-                "name": "Danny Magee",
-                "img": "https://images.pexels.com/photos/32976/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            }
-        },
-        {
-            "id": 3,
-            "review": 4,
-            "feedback": "Orci vel eget in eu. Integer amet porttitor hendrerit etiam arcu, aliquet duis pretium consequat. Semper sed viverra enim ut nunc",
-            "profile": {
-                "name": "Danny Magee",
-                "img": "https://images.pexels.com/photos/32976/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            }
+          "timestamp": "2024-03-14T15:45:00Z",
+          "action": "watched_video",
+          "course_id": "course_101"
         }
-    ]
-    
+      ]
+    },
+    {
+      "id": "stu_002",
+      "name": "Trần Thị B",
+      "email": "transthib@example.com",
+      "password": "$2b$10$hashedpassword",
+      "role": "student",
+      "profile": {
+        "age": 21,
+        "gender": "female",
+        "university": "Đại học Bách Khoa",
+        "major": "Công nghệ thông tin",
+        "year": 3,
+        "gpa": 3.5
+      },
+      "enrolled_courses": [
+        {
+          "course_id": "course_101",
+          "progress": 75,
+          "completed": false
+        },
+        {
+          "course_id": "course_202",
+          "progress": 100,
+          "completed": true
+        }
+      ],
+      "certificates": [
+        {
+          "certificate_id": "cert_001",
+          "course_id": "course_202",
+          "issued_date": "2024-01-15"
+        }
+      ],
+      "activity_log": [
+        {
+          "timestamp": "2024-03-15T10:30:00Z",
+          "action": "completed_quiz",
+          "course_id": "course_101"
+        },
+        {
+          "timestamp": "2024-03-14T15:45:00Z",
+          "action": "watched_video",
+          "course_id": "course_101"
+        }
+      ]
+    }
+  ]
 }

@@ -17,6 +17,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.8.3",
     "formik": "^2.4.6",
     "framer-motion": "^11.11.1",
     "i18next": "^23.15.2",
@@ -27,21 +28,20 @@
     "react-i18next": "^15.0.2",
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.26.2",
-    "react-scripts": "^5.0.1",
     "react-slick": "^0.30.2",
     "sitemap": "^8.0.0",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "json-server --watch mock/db.json --port 5000",
-    "dev": "concurrently \"npm start\" \"npm run server\"",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "dev": "concurrently \"vite\" \"npm run server\"",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "server": "json-server --watch db.json --port 3005",
+    "analyze": "source-map-explorer 'dist/assets/*.js'",
+    "deploy": "gh-pages -d dist",
     "sitemap": "node ./sitemap-generator.js"
   },
   "eslintConfig": {
@@ -69,6 +69,7 @@
     "json-server": "^1.0.0-beta.3",
     "sass": "^1.85.0",
     "sass-loader": "^16.0.5",
-    "tailwindcss": "^3.4.13"
+    "tailwindcss": "^3.4.13",
+    "vite": "^6.2.2"
   }
 }
