@@ -1,0 +1,49 @@
+$live-color-faded: rgba(254, 59, 31, 0.5);
+$live-backdrop-faded: rgba(60, 47, 128, 0.15);
+
+header {
+  height: calc(100svh - 64px);
+}
+.slick-slide{
+  padding: 16px;
+  padding-bottom: 32px;
+}
+.live-session-image {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $live-backdrop-faded; 
+        }
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 20px;
+              height: 20px;
+              transform: translate(-50%, -50%);
+              border-radius: 50%;
+              border: 2px solid $live-color-faded;
+              animation: pulse 1.5s infinite ease-in-out;
+            }
+          }
+          
+          @keyframes pulse {
+            0% {
+              transform: translate(-50%, -50%) scale(1);
+              opacity: 1;
+            }
+            100% {
+              transform: translate(-50%, -50%) scale(1.8);
+              opacity: 0;
+            }
+          }
+    }
+

@@ -1,0 +1,38 @@
+{
+    "navbar": {
+        "become_one_of_us": "Become one of us",
+        "search_placeholder": "Search for training…",
+        "login": "Login",
+        "signup": "SignUp"
+    },
+    "hero": {
+        "heading1": "Investing in",
+        "heading2": "knowledge and",
+        "heading3": "Your future",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper.",
+        "button": "See more"
+    },
+    "exclusive_training": {
+        "title": "Our Exclusive Training"
+    },
+    "live-session": {
+        "live": "live",
+        "join-session": "Join Session Now"
+    },
+    "training-categorie": {
+        "title": "Our Training Categories",
+        "see-more": "See more",
+        "browse-all": "Browse All Categories"
+    },
+    "newsletter": {
+        "title": "Join our newsLetter",
+        "subscribe": "Subscribe"
+    },
+    "feedback": {
+        "title": "what our clients says"
+    },
+    "form-errors": {
+        "required": "required",
+        "invalid-email": "Invalid email address"
+    }
+}

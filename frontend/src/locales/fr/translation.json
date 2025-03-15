@@ -1,0 +1,36 @@
+{
+    "navbar": {
+      "become_one_of_us": "Devenir un de nous",
+      "search_placeholder": "Rechercher une formation…",
+      "login": "Se connecter",
+      "signup": "S'inscrire"
+    },
+    "hero": {
+    "heading1": "Investir dans",
+    "heading2": "le savoir et",
+    "heading3": "Votre avenir",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices ex ut sem tincidunt, ac dignissim elit bibendum. Etiam vestibulum at metus eget ullamcorper.",
+    "button": "Voir plus"
+  },
+  "exclusive_training": {
+      "title": "Notre formation exclusive"
+  },
+  "live-session": {
+      "live": "en direct",
+      "join-session": "Rejoignez maintenant"
+  },
+  "training-categorie": {
+      "title": "Nos catégories de formation",
+      "see-more": "Voir plus",
+      "browse-all": "Toutes les catégories"
+  },
+  "newsletter": {
+      "title": "Inscrivez-vous à notre newsletter",
+      "subscribe": "S'abonner"
+  },
+  "form-errors": {
+      "required": "champ obligatoire",
+      "invalid-email": "Adresse email invalide"
+  }
+  }
+  
