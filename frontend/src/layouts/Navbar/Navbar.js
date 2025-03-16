@@ -14,6 +14,26 @@ const Navbar = () => {
   const navigate = useNavigate();
   const searchRef = useRef(null); // Reference for the search area
   const resultsRef = useRef(null); // Reference for the results dropdown
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const checkToken = () => {
+      const storedToken = localStorage.getItem("token");
+      setToken(storedToken);
+    };
+
+    checkToken(); // Kiểm tra ngay khi component được render
+
+    const interval = setInterval(checkToken, 2000); // Kiểm tra mỗi 2 giây
+
+    return () => clearInterval(interval); // Dọn dẹp interval khi component bị unmount
+  }, []);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+    window.location.reload();
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -150,24 +170,33 @@ const Navbar = () => {
         </div>
 
         {/* Authentication Buttons */}
-        <div className="items-center justify-end hidden w-2/12 xl:flex lg:space-x-1 xl:space-x-2">
+        {token ? (
           <button
-            onClick={() =>
-              (window.location.href = "http://localhost:3007/login")
-            }
-            className="px-4 py-3 text-sm font-medium text-white rounded-md bg-primary hover:text-gray-light max-w-1/2 xl:px-6"
-          >
-            {t("navbar.login")}
-          </button>
-          <button
-            onClick={() =>
-              (window.location.href = "http://localhost:3007/register")
-            }
+            onClick={() => handleSignOut()}
             className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
           >
-            {t("navbar.signup")}
+            {t("signout")}
           </button>
-        </div>
+        ) : (
+          <div className="items-center justify-end hidden w-2/12 xl:flex lg:space-x-1 xl:space-x-2">
+            <button
+              onClick={() =>
+                (window.location.href = "http://localhost:3007/login")
+              }
+              className="px-4 py-3 text-sm font-medium text-white rounded-md bg-primary hover:text-gray-light max-w-1/2 xl:px-6"
+            >
+              {t("navbar.login")}
+            </button>
+            <button
+              onClick={() =>
+                (window.location.href = "http://localhost:3007/register")
+              }
+              className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
+            >
+              {t("navbar.signup")}
+            </button>
+          </div>
+        )}
 
         {/* Language Selector */}
         <div className="relative justify-end hidden w-1/12 xl:flex">

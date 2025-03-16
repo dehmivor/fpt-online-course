@@ -176,46 +176,63 @@ function CourseMana() {
         data={courses}
       />
 
-      {/* Modal chi tiết hoặc chỉnh sửa */}
       {isModalOpen && (
         <FullscreenModal
           isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
+          onClose={() => {
+            setIsModalOpen(false);
+            setIsEdit(false); // Reset về chế độ xem chi tiết khi đóng modal
+          }}
           title={isEdit ? t("Edit Course") : t("Course Details")}
         >
           {isEdit ? (
-            <Form
-              initialValues={selectedCourse}
-              fields={[
-                { name: "title", label: t("Title"), required: true },
-                { name: "date", label: t("Date"), required: true },
-                {
-                  name: "description",
-                  label: t("Description"),
-                  required: true,
-                  type: "textarea",
-                },
-                { name: "categorie", label: t("Category"), required: true },
-                {
-                  name: "sub_categorie",
-                  label: t("Subcategory"),
-                  required: true,
-                },
-                {
-                  name: "img",
-                  label: t("Image URL"),
-                  required: true,
-                },
-              ]}
-              onSubmit={handleFormSubmit}
-              submitLabel={isEdit ? t("Update Course") : t("Create Course")}
-            />
+            // Chế độ chỉnh sửa: hiển thị form với dữ liệu khởi tạo và label
+            <div className="max-w-3xl mx-auto">
+              <h2 className="mb-4 text-2xl font-bold text-center">
+                {t("Edit Course")}
+              </h2>
+              <Form
+                initialValues={{
+                  title: selectedCourse?.title || "",
+                  date: selectedCourse?.date || "",
+                  description: selectedCourse?.description || "",
+                  categorie: selectedCourse?.categorie || "",
+                  sub_categorie: selectedCourse?.sub_categorie || "",
+                  img: selectedCourse?.img || "",
+                }}
+                fields={[
+                  { name: "title", label: t("Title"), required: true },
+                  {
+                    name: "date",
+                    label: t("Date"),
+                    required: true,
+                    type: "date",
+                  },
+                  {
+                    name: "description",
+                    label: t("Description"),
+                    required: true,
+                    type: "textarea",
+                  },
+                  { name: "categorie", label: t("Category"), required: true },
+                  {
+                    name: "sub_categorie",
+                    label: t("Subcategory"),
+                    required: true,
+                  },
+                  { name: "img", label: t("Image URL"), required: true },
+                ]}
+                onSubmit={handleFormSubmit}
+                submitLabel={t("Update Course")}
+              />
+            </div>
           ) : (
+            // Chế độ xem chi tiết: hiển thị dữ liệu cùng với nhãn cho từng thông tin
             <div className="max-w-4xl mx-auto">
               {selectedCourse && (
                 <div className="space-y-6">
                   <div className="flex flex-col md:flex-row md:space-x-6">
-                    {/* Left column - Course image */}
+                    {/* Cột bên trái - Ảnh khóa học */}
                     <div className="w-full mb-4 md:w-1/3 md:mb-0">
                       {selectedCourse.img && (
                         <div className="h-64 overflow-hidden rounded-lg">
@@ -228,16 +245,19 @@ function CourseMana() {
                       )}
                     </div>
 
-                    {/* Right column - Course info */}
+                    {/* Cột bên phải - Thông tin khóa học */}
                     <div className="w-full md:w-2/3">
-                      <h2 className="mb-2 text-2xl font-bold">
-                        {selectedCourse.title}
-                      </h2>
-                      <p className="mb-4 text-gray-600">
-                        {selectedCourse.date}
-                      </p>
-
-                      {/* Trainer info */}
+                      <div className="mb-4">
+                        <p className="text-sm text-gray-500">{t("Title")}:</p>
+                        <h2 className="text-2xl font-bold">
+                          {selectedCourse.title}
+                        </h2>
+                      </div>
+                      <div className="mb-4">
+                        <p className="text-sm text-gray-500">{t("Date")}:</p>
+                        <p className="text-gray-600">{selectedCourse.date}</p>
+                      </div>
+                      {/* Thông tin huấn luyện viên */}
                       <div className="flex items-center p-4 mb-4 space-x-4 rounded-lg bg-gray-50">
                         {selectedCourse.trainer?.img && (
                           <img
@@ -268,11 +288,10 @@ function CourseMana() {
                           )}
                         </div>
                       </div>
-
-                      {/* Categories */}
+                      {/* Danh mục */}
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div className="p-3 rounded-md bg-gray-50">
-                          <p className="mb-1 text-sm text-gray-500">
+                          <p className="text-sm text-gray-500">
                             {t("Category")}
                           </p>
                           <p className="font-medium">
@@ -280,7 +299,7 @@ function CourseMana() {
                           </p>
                         </div>
                         <div className="p-3 rounded-md bg-gray-50">
-                          <p className="mb-1 text-sm text-gray-500">
+                          <p className="text-sm text-gray-500">
                             {t("Subcategory")}
                           </p>
                           <p className="font-medium">
@@ -291,111 +310,48 @@ function CourseMana() {
                     </div>
                   </div>
 
-                  {/* Course details section */}
+                  {/* Phần chi tiết khóa học */}
                   <div className="p-4 mt-6 rounded-lg bg-gray-50">
-                    <h3 className="mb-2 text-lg font-medium">
-                      {t("Course ID")}
-                    </h3>
-                    <p className="mb-4 font-mono text-gray-700">
-                      {selectedCourse._id}
-                    </p>
-
-                    <h3 className="mb-2 text-lg font-medium">
-                      {t("Description")}
-                    </h3>
-                    <div className="p-4 mb-4 bg-white rounded-md">
-                      <p className="whitespace-pre-line">
-                        {selectedCourse.description}
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-500">{t("Course ID")}:</p>
+                      <p className="mb-4 font-mono text-gray-700">
+                        {selectedCourse._id}
                       </p>
                     </div>
-
-                    <h3 className="mb-2 text-lg font-medium">
-                      {t("Image URL")}
-                    </h3>
-                    <div className="p-4 mb-4 font-mono text-sm break-all bg-white rounded-md">
-                      <a
-                        href={selectedCourse.img}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-blue-500 hover:underline"
-                      >
-                        {selectedCourse.img}
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Videos section */}
-                  {selectedCourse.videos &&
-                    selectedCourse.videos.length > 0 && (
-                      <div className="p-4 rounded-lg bg-gray-50">
-                        <h3 className="mb-3 text-lg font-medium">
-                          {t("Videos")}
-                        </h3>
-                        <div className="space-y-3">
-                          {selectedCourse.videos.map((video) => (
-                            <div
-                              key={video._id}
-                              className="p-4 bg-white rounded-md"
-                            >
-                              <div className="flex justify-between mb-2">
-                                <span className="font-medium">
-                                  {video.title}
-                                </span>
-                                <span className="px-2 py-1 text-sm text-gray-500 bg-gray-100 rounded-full">
-                                  {video.duration}
-                                </span>
-                              </div>
-                              <p className="mb-2 text-sm text-gray-500">
-                                {t("Video ID")}:{" "}
-                                <span className="font-mono">{video.id}</span>
-                              </p>
-                              <div className="mt-2 break-all">
-                                <p className="mb-1 text-sm text-gray-500">
-                                  {t("Video URL")}:
-                                </p>
-                                <a
-                                  href={video.url}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="font-mono text-sm text-blue-500 hover:underline"
-                                >
-                                  {video.url}
-                                </a>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                  {/* Trainer detailed info */}
-                  {selectedCourse.trainer && (
-                    <div className="p-4 rounded-lg bg-gray-50">
-                      <h3 className="mb-3 text-lg font-medium">
-                        {t("Trainer Details")}
-                      </h3>
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-500">
+                        {t("Description")}:
+                      </p>
                       <div className="p-4 bg-white rounded-md">
-                        <p className="mb-1 text-sm text-gray-500">
-                          {t("Trainer ID")}
+                        <p className="whitespace-pre-line">
+                          {selectedCourse.description}
                         </p>
-                        <p className="mb-3 font-mono">
-                          {selectedCourse.trainer._id}
-                        </p>
-
-                        <p className="mb-1 text-sm text-gray-500">
-                          {t("Trainer Image URL")}
-                        </p>
+                      </div>
+                    </div>
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-500">{t("Image URL")}:</p>
+                      <div className="p-4 font-mono text-sm break-all bg-white rounded-md">
                         <a
-                          href={selectedCourse.trainer.img}
+                          href={selectedCourse.img}
                           target="_blank"
                           rel="noreferrer"
-                          className="font-mono text-sm text-blue-500 break-all hover:underline"
+                          className="text-blue-500 hover:underline"
                         >
-                          {selectedCourse.trainer.img}
+                          {selectedCourse.img}
                         </a>
                       </div>
                     </div>
-                  )}
+                  </div>
+
+                  {/* Nút chuyển sang chế độ chỉnh sửa */}
+                  <div className="flex justify-end">
+                    <button
+                      onClick={() => setIsEdit(true)}
+                      className="px-4 py-2 text-sm font-medium text-white rounded-md bg-primary hover:bg-primary-dark"
+                    >
+                      {t("Update")}
+                    </button>
+                  </div>
                 </div>
               )}
             </div>

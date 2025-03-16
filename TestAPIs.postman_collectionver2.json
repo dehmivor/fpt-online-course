@@ -1,0 +1,561 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-1234567890ab",
+    "name": "Test APIs Collection 2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/auth/register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"stu_003\",\n  \"name\": \"Nguyễn Văn A\",\n  \"email\": \"nguyenvana@example.com\",\n  \"password\": \"123456\",\n  \"profile\": {\n    \"age\": 20,\n    \"gender\": \"male\",\n    \"university\": \"Đại học Bách Khoa\",\n    \"major\": \"Công nghệ thông tin\",\n    \"year\": 3,\n    \"gpa\": 3.5\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/auth/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "auth", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/auth/login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"nguyenvana@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/feedbacks/create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 4,\n  \"review\": 5,\n  \"feedback\": \"Excellent course!\",\n  \"profile\": {\n    \"name\": \"Trần Thị B\",\n    \"img\": \"https://images.pexels.com/photos/32976/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\"\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/feedbacks/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "feedbacks", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/feedbacks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/feedbacks",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "feedbacks"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/feedbacks/:id (ví dụ: id = 1)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/feedbacks/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "feedbacks", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/categories/create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 8,\n  \"label\": \"Health & Wellness\",\n  \"img\": \"https://example.com/health.jpg\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/categories/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "categories", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/categories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/categories",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "categories"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/live-sessions/create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 7,\n  \"title\": \"Career Essentials in Generative AI\",\n  \"img\": \"https://images.pexels.com/photos/3756693/pexels-photo-3756693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\",\n  \"description\": \"Join our live session to learn about career essentials in Generative AI.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/live-sessions/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "live-sessions", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/live-sessions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/live-sessions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "live-sessions"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/live-sessions/:id (ví dụ: id = 6)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/live-sessions/6",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "live-sessions", "6"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/training/create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 13,\n  \"title\": \"New Training Course\",\n  \"img\": \"https://example.com/training.jpg\",\n  \"description\": \"This is a new training course description.\",\n  \"date\": \"01 January 2025, 10:00\",\n  \"trainer\": {\n    \"img\": \"https://example.com/trainer.jpg\",\n    \"name\": \"Trainer Name\",\n    \"rate\": 5,\n    \"totalReview\": 100\n  },\n  \"categorie\": \"Programming\",\n  \"sub_categorie\": \"Web Development\",\n  \"videos\": [\n    {\n      \"id\": \"video_001\",\n      \"title\": \"Introduction\",\n      \"duration\": \"10 min\",\n      \"url\": \"http://localhost:3008/videos/intro.mp4\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/training/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "training", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/training",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/training",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "training"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/training/:id (ví dụ: id = 1)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/training/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "training", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/auth/login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"nguyenvana@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/auth/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users"]
+        }
+      }
+    },
+    {
+      "name": "Get User by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "auth", "users", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"123\",\n  \"name\": \"John Doe\",\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"securepass\",\n  \"role\": \"user\",\n  \"profile\": {}\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/users/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", "create"]
+        }
+      }
+    },
+    {
+      "name": "Update User",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Name\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Enroll User in Course",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"course_id\": \"course123\",\n  \"progress\": 0,\n  \"completed\": false\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id/courses",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", ":id", "courses"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Course Progress",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"progress\": 50,\n  \"completed\": false\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id/courses/:courseId",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", ":id", "courses", ":courseId"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "123"
+            },
+            {
+              "key": "courseId",
+              "value": "course123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Remove Course from User",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id/courses/:courseId",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", ":id", "courses", ":courseId"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "123"
+            },
+            {
+              "key": "courseId",
+              "value": "course123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add Certificate to User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"certificate_id\": \"cert123\",\n  \"course_id\": \"course123\",\n  \"issued_date\": \"2025-03-17\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id/certificates",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", ":id", "certificates"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get User Activity Log",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id/activity",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", ":id", "activity"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update User Profile",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"profile\": {\"bio\": \"Updated bio\"}\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/users/:id/profile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "users", ":id", "profile"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "123"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
