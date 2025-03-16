@@ -78,7 +78,7 @@ router.post("/login", async (req, res) => {
 
   try {
     // Find the user by username (id)
-    const user = await User.findOne({ id: username });
+    const user = await User.findOne({ username: username });
     if (!user) return res.status(400).json({ message: "User not found" });
 
     // Check if the password matches

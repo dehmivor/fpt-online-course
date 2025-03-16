@@ -70,7 +70,7 @@ function Register() {
       .then((data) => {
         console.log("Registration successful:", data);
         toast.success(t("Registration successful!"));
-        navigate("/recent");
+        navigate("/login");
       })
       .catch((error) => {
         console.error("Error during registration:", error);

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const RecentCourse = () => {
@@ -7,23 +6,13 @@ const RecentCourse = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Fetch thông tin sinh viên
+  // Lấy dữ liệu từ localStorage
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        // Giả sử API này trả về thông tin sinh viên
-        const response = await fetch("http://localhost:3008/users/stu_001");
-        const data = await response.json();
-
-        setUser(data); // Lưu thông tin sinh viên vào state
-        setLoading(false); // Đã tải xong
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchUserData();
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser)); // Chuyển JSON string thành object
+    }
+    setLoading(false); // Đã tải xong
   }, []);
 
   // Điều hướng đến trang khóa học chi tiết
@@ -31,7 +20,7 @@ const RecentCourse = () => {
     navigate(`/course/${courseId}`);
   };
 
-  // Nếu chưa có thông tin sinh viên hoặc đang tải, hiển thị thông báo
+  // Nếu đang tải, hiển thị thông báo loading
   if (loading) {
     return (
       <div className="py-10 text-center">
@@ -40,7 +29,8 @@ const RecentCourse = () => {
     );
   }
 
-  if (!user || user.enrolled_courses.length === 0) {
+  // Nếu không có dữ liệu hoặc không có khóa học nào
+  if (!user || !user.enrolled_courses || user.enrolled_courses.length === 0) {
     return (
       <div className="py-10 text-center">
         <p>You are not enrolled in any courses at the moment.</p>
@@ -48,15 +38,11 @@ const RecentCourse = () => {
     );
   }
 
-  // Hàm để lấy màu thanh tiến độ dựa trên tiến độ
+  // Hàm lấy màu thanh tiến độ dựa trên % hoàn thành
   const getProgressColor = (progress) => {
-    if (progress <= 50) {
-      return "bg-red-500"; // Màu đỏ nếu tiến độ <= 50%
-    } else if (progress <= 80) {
-      return "bg-yellow-500"; // Màu vàng nếu tiến độ <= 80%
-    } else {
-      return "bg-green-500"; // Màu xanh lá nếu tiến độ > 80%
-    }
+    if (progress <= 50) return "bg-red-500"; // Đỏ nếu tiến độ <= 50%
+    if (progress <= 80) return "bg-yellow-500"; // Vàng nếu tiến độ <= 80%
+    return "bg-green-500"; // Xanh nếu tiến độ > 80%
   };
 
   return (
@@ -81,19 +67,17 @@ const RecentCourse = () => {
                   Status: {course.completed ? "Completed" : "In Progress"}
                 </p>
               </div>
-              <div className="flex items-center space-x-2">
-                <div className="flex flex-col items-center">
-                  <p className="text-sm text-gray-600">Progress</p>
-                  <div className="relative w-32 h-3 bg-gray-200 rounded-full">
-                    <div
-                      className={`absolute top-0 left-0 h-3 ${getProgressColor(
-                        course.progress
-                      )} rounded-full`}
-                      style={{ width: `${course.progress}%` }}
-                    ></div>
-                  </div>
-                  <p className="text-sm text-gray-600">{course.progress}%</p>
+              <div className="flex flex-col items-center">
+                <p className="text-sm text-gray-600">Progress</p>
+                <div className="relative w-32 h-3 bg-gray-200 rounded-full">
+                  <div
+                    className={`absolute top-0 left-0 h-3 ${getProgressColor(
+                      course.progress
+                    )} rounded-full`}
+                    style={{ width: `${course.progress}%` }}
+                  ></div>
                 </div>
+                <p className="text-sm text-gray-600">{course.progress}%</p>
               </div>
             </div>
           </div>

@@ -30,6 +30,7 @@ const Navbar = () => {
   }, []);
 
   const handleSignOut = () => {
+    localStorage.removeItem("user");
     localStorage.removeItem("token");
     setToken(null);
     window.location.reload();
@@ -188,9 +189,10 @@ const Navbar = () => {
               {t("navbar.login")}
             </button>
             <button
-              onClick={() =>
-                (window.location.href = "http://localhost:3007/register")
-              }
+              onClick={() => {
+                window.location.href = "http://localhost:3007/register";
+                localStorage.removeItem("user");
+              }}
               className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
             >
               {t("navbar.signup")}
