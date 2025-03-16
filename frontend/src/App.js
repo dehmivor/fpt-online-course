@@ -14,6 +14,8 @@ import CourseDetail from "./pages/home/Course/CourseDetail";
 import RecentCourse from "./pages/home/Course/RecentCourse";
 import CourseModule from "./pages/home/Course/CourseModule";
 import CourseForm from "./pages/manage/CourseForm";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -66,6 +68,7 @@ function App() {
       </Helmet>
       <BrowserRouter>
         <Layout>
+          <ToastContainer />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Notfound />} />

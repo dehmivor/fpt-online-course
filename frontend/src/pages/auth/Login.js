@@ -1,16 +1,55 @@
-import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import MainHero from "../../assets/img/images/main-hero1.PNG";
 
 function Login() {
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Username:", username, "Password:", password);
-    // Xử lý đăng nhập
+
+    try {
+      const response = await fetch(`http://localhost:5003/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error("Login error:", data.message || data.error);
+        if (response.status === 401) {
+          toast.error("Invalid username or password");
+        } else if (response.status === 500) {
+          toast.error("Server error. Please try again later.");
+        } else {
+          toast.error(
+            data.message ||
+              data.error ||
+              "An error occurred. Please try again later."
+          );
+        }
+        return;
+      }
+
+      // Nếu đăng nhập thành công, hiển thị toast thành công
+      toast.success("Login successful!");
+      console.log("Login success:", data);
+      navigate("/recent");
+      // Lưu token vào localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("token", data.token);
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
 
   const changeLanguage = (lng) => {
