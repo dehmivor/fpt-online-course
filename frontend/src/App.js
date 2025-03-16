@@ -61,8 +61,8 @@ function App() {
           content="https://risemaster.ihebmejri.com/preview-image.webp"
         />
       </Helmet>
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Notfound />} />
@@ -70,11 +70,11 @@ function App() {
             <Route path="/user-mana" element={<UserManage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/course-list" element={<CourseList />} />
+            <Route path="/course" element={<CourseList />} />
             <Route path="/course/:id" element={<CourseDetail />} />
           </Routes>
-        </BrowserRouter>
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     </>
   );
 }
