@@ -5,7 +5,6 @@ const router = express.Router();
 // Route to create a new training session
 router.post("/create", async (req, res) => {
   const {
-    id,
     title,
     img,
     description,
@@ -17,9 +16,13 @@ router.post("/create", async (req, res) => {
   } = req.body;
 
   try {
-    // Create a new training session
+    // Lấy số lượng phần tử hiện có để xác định id mới
+    const count = await Training.countDocuments();
+    const newId = count + 1;
+
+    // Tạo một session training mới
     const newTraining = new Training({
-      id,
+      id: newId,
       title,
       img,
       description,
@@ -30,7 +33,7 @@ router.post("/create", async (req, res) => {
       videos,
     });
 
-    // Save the training session to the database
+    // Lưu vào database
     await newTraining.save();
 
     res.status(201).json({
