@@ -10,6 +10,7 @@ import UserManage from "./pages/manage/UserManage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import CourseList from "./pages/home/Course/CourseList";
+import CourseDetail from "./pages/home/Course/CourseDetail";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/course-list" element={<CourseList />} />
+            <Route path="/course/:id" element={<CourseDetail />} />
           </Routes>
         </BrowserRouter>
       </Layout>
