@@ -40,6 +40,7 @@ const Navbar = () => {
   }, [searchTerm]);
 
   const handleSelect = (id) => {
+    console.log("Selected course with id:", id);
     navigate(`/course/${id}`);
   };
 
@@ -86,7 +87,9 @@ const Navbar = () => {
 
         <div
           className="items-center hidden w-2/12 cursor-pointer xl:flex"
-          onClick={() => (window.location.href = "http://localhost:3007/")}
+          onClick={() =>
+            (window.location.href = "http://localhost:3007/course")
+          }
         >
           <span className="w-full font-semibold text-center text-secondary">
             {t("navbar.become_one_of_us")}

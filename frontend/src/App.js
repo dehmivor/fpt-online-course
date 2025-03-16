@@ -79,7 +79,7 @@ function App() {
             <Route path="/course" element={<CourseList />} />
             <Route path="/course/:id" element={<CourseDetail />} />
             <Route path="/recent" element={<RecentCourse />} />
-            <Route path="/module" element={<CourseModule />} />
+            <Route path="/course-module" element={<CourseModule />} />
             <Route path="/create-course" element={<CourseForm />} />
           </Routes>
         </Layout>

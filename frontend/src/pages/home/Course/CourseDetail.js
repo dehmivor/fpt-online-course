@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import { useNavigate } from "react-router-dom";
 function CourseDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { t } = useTranslation();
   const [course, setCourse] = useState(null);
@@ -101,7 +102,7 @@ function CourseDetail() {
             </div>
             <button
               className="w-full py-3 font-semibold text-white rounded-md bg-primary hover:bg-primary-dark"
-              onClick={() => alert("Enrolled successfully!")}
+              onClick={() => navigate("/course-module")}
             >
               {t("Enroll Now")}
             </button>
