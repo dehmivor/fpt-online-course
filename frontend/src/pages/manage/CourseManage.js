@@ -3,8 +3,10 @@ import Modal from "../../components/Modal";
 import Table from "../../components/Table";
 import Form from "../../components/Form";
 import Card from "../../components/Card";
+import { useTranslation } from "react-i18next";
 
 function CourseMana() {
+  const { t, i18n } = useTranslation();
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,13 +61,13 @@ function CourseMana() {
               <div className="space-x-2">
                 <button
                   onClick={() => handleViewDetails(row)}
-                  className="text-blue-500"
+                  className="px-4 py-3 text-sm font-medium text-white rounded-md bg-primary hover:text-gray-light max-w-1/2 xl:px-6"
                 >
                   Xem
                 </button>
                 <button
                   onClick={() => handleEditCourse(row)}
-                  className="text-yellow-500"
+                  className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
                 >
                   Sửa
                 </button>

@@ -16,7 +16,7 @@ export default function UserManage() {
   useEffect(() => {
     fetch("http://localhost:3008/users")
       .then((res) => res.json())
-      .then((data) => setUsers(data) && console.log(data))
+      .then((data) => setUsers(data))
       .catch((err) => console.error("Error fetching users:", err));
   }, []);
 
@@ -25,33 +25,34 @@ export default function UserManage() {
     setOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setOpen(false);
+    setSelectedUser(null);
+  };
+
+  const columns = [
+    { key: "id", label: "ID" },
+    { key: "name", label: "Name" },
+    { key: "email", label: "Email" },
+    { key: "role", label: "Role" },
+    {
+      key: "actions",
+      label: "Actions",
+      renderCell: (_, user) => (
+        <button
+          onClick={() => handleOpenModal(user)}
+          className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
+        >
+          Xem
+        </button>
+      ),
+    },
+  ];
+
   return (
     <div className="p-6">
       <h1 className="mb-4 text-2xl font-bold">User Management</h1>
-      <Table>
-        <thead>
-          <tr>
-            <th className="px-4 py-2">ID</th>
-            <th className="px-4 py-2">Name</th>
-            <th className="px-4 py-2">Email</th>
-            <th className="px-4 py-2">Role</th>
-            <th className="px-4 py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users?.map((user) => (
-            <tr key={user.id}>
-              <td className="px-4 py-2">{user.id}</td>
-              <td className="px-4 py-2">{user.name}</td>
-              <td className="px-4 py-2">{user.email}</td>
-              <td className="px-4 py-2">{user.role}</td>
-              <td className="px-4 py-2">
-                <Button onClick={() => handleOpenModal(user)}>View</Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <Table columns={columns} data={users} />
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
@@ -72,15 +73,28 @@ export default function UserManage() {
               <p>
                 <strong>Role:</strong> {selectedUser.role}
               </p>
-              <p>
-                <strong>University:</strong> {selectedUser.profile.university}
-              </p>
-              <p>
-                <strong>Major:</strong> {selectedUser.profile.major}
-              </p>
-              <p>
-                <strong>GPA:</strong> {selectedUser.profile.gpa}
-              </p>
+              {selectedUser.profile && (
+                <>
+                  <p>
+                    <strong>University:</strong>{" "}
+                    {selectedUser.profile.university}
+                  </p>
+                  <p>
+                    <strong>Major:</strong> {selectedUser.profile.major}
+                  </p>
+                  <p>
+                    <strong>GPA:</strong> {selectedUser.profile.gpa}
+                  </p>
+                </>
+              )}
+              <div className="mt-4 text-right">
+                <button
+                  onClick={handleCloseModal}
+                  className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
+                >
+                  Trở lại
+                </button>
+              </div>
             </div>
           )}
         </DialogContent>

@@ -42,7 +42,8 @@
     "dev": "concurrently \"npm start\" \"npm run server\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "sitemap": "node ./sitemap-generator.js"
+    "sitemap": "node ./sitemap-generator.js",
+    "proxy": "http://localhost:3008"
   },
   "eslintConfig": {
     "extends": [
