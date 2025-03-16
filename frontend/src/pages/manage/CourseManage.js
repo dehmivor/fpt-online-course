@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import Card from "../../components/Card";
+import Form from "../../components/Form";
 import Modal from "../../components/Modal";
 import Table from "../../components/Table";
-import Form from "../../components/Form";
-import Card from "../../components/Card";
-import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 function CourseMana() {
   const { t, i18n } = useTranslation();
@@ -11,6 +12,7 @@ function CourseMana() {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3008/training")
@@ -45,6 +47,17 @@ function CourseMana() {
         {t("Course management")}
       </h1>
 
+      <div className="flex justify-center">
+        <button
+          onClick={() => {
+            navigate("/create-course"); // Điều hướng đến trang CourseForm
+          }}
+          className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
+        >
+          {t("Create New Course")}
+        </button>
+      </div>
+
       {/* Bảng hiển thị danh sách khóa học */}
       <Table
         columns={[
@@ -65,13 +78,13 @@ function CourseMana() {
                   onClick={() => handleViewDetails(row)}
                   className="px-4 py-3 text-sm font-medium text-white rounded-md bg-primary hover:text-gray-light max-w-1/2 xl:px-6"
                 >
-                  Xem
+                  View detail
                 </button>
                 <button
                   onClick={() => handleEditCourse(row)}
                   className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
                 >
-                  Sửa
+                  Change
                 </button>
               </div>
             ),

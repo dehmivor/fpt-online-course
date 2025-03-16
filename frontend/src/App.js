@@ -13,6 +13,7 @@ import CourseList from "./pages/home/Course/CourseList";
 import CourseDetail from "./pages/home/Course/CourseDetail";
 import RecentCourse from "./pages/home/Course/RecentCourse";
 import CourseModule from "./pages/home/Course/CourseModule";
+import CourseForm from "./pages/manage/CourseForm";
 
 function App() {
   return (
@@ -76,6 +77,7 @@ function App() {
             <Route path="/course/:id" element={<CourseDetail />} />
             <Route path="/recent" element={<RecentCourse />} />
             <Route path="/module" element={<CourseModule />} />
+            <Route path="/create-course" element={<CourseForm />} />
           </Routes>
         </Layout>
       </BrowserRouter>
