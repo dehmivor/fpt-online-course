@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Card from "../../components/Card";
-import Form from "../../components/Form";
-import Modal from "../../components/Modal";
-import Table from "../../components/Table";
 import { useNavigate } from "react-router-dom";
+import Table from "../../components/Table";
 
 function CourseMana() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,6 +34,7 @@ function CourseMana() {
 
   // Xử lý mở modal để chỉnh sửa khóa học
   const handleEditCourse = (course) => {
+    console.log("Selected course for edit:", course);
     setSelectedCourse(course);
     setIsModalOpen(true);
     setIsEdit(true);
@@ -45,32 +43,46 @@ function CourseMana() {
   // Xử lý submit form (thêm/sửa khóa học)
   const handleFormSubmit = (values) => {
     console.log("Form submitted:", values);
+    console.log("isEdit:", isEdit, "selectedCourse:", selectedCourse);
 
-    const method = isEdit ? "PUT" : "POST";
-    const url = isEdit
-      ? `http://localhost:5003/api/training/${selectedCourse._id}`
-      : "http://localhost:5003/api/training";
+    if (!isEdit || !selectedCourse?.id) {
+      console.error("Update failed: No course selected.");
+      alert("Update failed: No course selected.");
+      return;
+    }
+
+    const url = `http://localhost:5003/api/training/${selectedCourse._id}`;
 
     fetch(url, {
-      method: method,
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(values),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to update course");
+        }
+        return res.json();
+      })
       .then((data) => {
         console.log("API response:", data);
+        alert("Course updated successfully: " + JSON.stringify(data));
+
         // Refresh courses after update
-        fetch("http://localhost:5003/api/training")
-          .then((res) => res.json())
-          .then((data) => {
-            if (data && data.trainings) {
-              setCourses(data.trainings);
-            }
-          });
+        return fetch("http://localhost:5003/api/training");
       })
-      .catch((err) => console.error("Error submitting form:", err));
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.trainings) {
+          setCourses(data.trainings);
+        }
+      })
+      .catch((err) => {
+        console.error("Error updating course:", err);
+        alert("Error updating course: " + err.message);
+      });
 
     setIsModalOpen(false);
   };
@@ -191,40 +203,117 @@ function CourseMana() {
               <h2 className="mb-4 text-2xl font-bold text-center">
                 {t("Edit Course")}
               </h2>
-              <Form
-                initialValues={{
-                  title: selectedCourse?.title || "",
-                  date: selectedCourse?.date || "",
-                  description: selectedCourse?.description || "",
-                  categorie: selectedCourse?.categorie || "",
-                  sub_categorie: selectedCourse?.sub_categorie || "",
-                  img: selectedCourse?.img || "",
-                }}
-                fields={[
-                  { name: "title", label: t("Title"), required: true },
-                  {
-                    name: "date",
-                    label: t("Date"),
-                    required: true,
-                    type: "date",
-                  },
-                  {
-                    name: "description",
-                    label: t("Description"),
-                    required: true,
-                    type: "textarea",
-                  },
-                  { name: "categorie", label: t("Category"), required: true },
-                  {
-                    name: "sub_categorie",
-                    label: t("Subcategory"),
-                    required: true,
-                  },
-                  { name: "img", label: t("Image URL"), required: true },
-                ]}
-                onSubmit={handleFormSubmit}
-                submitLabel={t("Update Course")}
-              />
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium">
+                    {t("Title")}
+                  </label>
+                  <input
+                    type="text"
+                    value={selectedCourse?.title || ""}
+                    onChange={(e) =>
+                      setSelectedCourse({
+                        ...selectedCourse,
+                        title: e.target.value,
+                      })
+                    }
+                    className="w-full p-2 border rounded-md"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium">
+                    {t("Date")}
+                  </label>
+                  <input
+                    type="date"
+                    value={selectedCourse?.date || ""}
+                    onChange={(e) =>
+                      setSelectedCourse({
+                        ...selectedCourse,
+                        date: e.target.value,
+                      })
+                    }
+                    className="w-full p-2 border rounded-md"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium">
+                    {t("Description")}
+                  </label>
+                  <textarea
+                    value={selectedCourse?.description || ""}
+                    onChange={(e) =>
+                      setSelectedCourse({
+                        ...selectedCourse,
+                        description: e.target.value,
+                      })
+                    }
+                    className="w-full p-2 border rounded-md"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium">
+                    {t("Category")}
+                  </label>
+                  <input
+                    type="text"
+                    value={selectedCourse?.categorie || ""}
+                    onChange={(e) =>
+                      setSelectedCourse({
+                        ...selectedCourse,
+                        categorie: e.target.value,
+                      })
+                    }
+                    className="w-full p-2 border rounded-md"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium">
+                    {t("Subcategory")}
+                  </label>
+                  <input
+                    type="text"
+                    value={selectedCourse?.sub_categorie || ""}
+                    onChange={(e) =>
+                      setSelectedCourse({
+                        ...selectedCourse,
+                        sub_categorie: e.target.value,
+                      })
+                    }
+                    className="w-full p-2 border rounded-md"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium">
+                    {t("Image URL")}
+                  </label>
+                  <input
+                    type="text"
+                    value={selectedCourse?.img || ""}
+                    onChange={(e) =>
+                      setSelectedCourse({
+                        ...selectedCourse,
+                        img: e.target.value,
+                      })
+                    }
+                    className="w-full p-2 border rounded-md"
+                    required
+                  />
+                </div>
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="px-4 py-3 text-sm font-medium bg-transparent border rounded-md border-primary text-primary max-w-1/2 xl:px-5"
+                  >
+                    {t("Update Course")}
+                  </button>
+                </div>
+              </form>
             </div>
           ) : (
             // Chế độ xem chi tiết: hiển thị dữ liệu cùng với nhãn cho từng thông tin
