@@ -11,9 +11,9 @@ function CourseMana() {
   const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:3005/training")
+    fetch("http://localhost:3008/training")
       .then((res) => res.json())
-      .then((data) => setCourses(data))
+      .then((data) => setCourses(data) && console.log(data))
       .catch((err) => console.error("Error fetching courses:", err));
   }, []);
 
