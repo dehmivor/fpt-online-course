@@ -59,6 +59,126 @@
       },
       "categorie": "Programming",
       "sub_categorie": "Web Development"
+    },
+    {
+      "id": 5,
+      "title": "Full-Stack Web Development",
+      "img": "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg",
+      "description": "Learn full-stack development with JavaScript, React, Node.js, and databases.",
+      "date": "25 December 2024, 18:00",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "John Doe",
+        "rate": 4.5,
+        "totalReview": 200
+      },
+      "categorie": "Programming",
+      "sub_categorie": "Full-Stack Development"
+    },
+    {
+      "id": 6,
+      "title": "UI/UX Design Fundamentals",
+      "img": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+      "description": "Master UI/UX design principles and tools like Figma and Adobe XD.",
+      "date": "10 January 2025, 15:00",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "Jane Smith",
+        "rate": 4.8,
+        "totalReview": 350
+      },
+      "categorie": "Design",
+      "sub_categorie": "UI/UX"
+    },
+    {
+      "id": 7,
+      "title": "Machine Learning with Python",
+      "img": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg",
+      "description": "Learn how to build machine learning models using Python and scikit-learn.",
+      "date": "5 February 2025, 20:00",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "Dr. Alan Turing",
+        "rate": 4.9,
+        "totalReview": 500
+      },
+      "categorie": "Data Science",
+      "sub_categorie": "Machine Learning"
+    },
+    {
+      "id": 8,
+      "title": "Cybersecurity Essentials",
+      "img": "https://images.pexels.com/photos/2881232/pexels-photo-2881232.jpeg",
+      "description": "Protect systems and data with fundamental cybersecurity strategies.",
+      "date": "20 March 2025, 14:00",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "Edward Snowden",
+        "rate": 4.7,
+        "totalReview": 420
+      },
+      "categorie": "IT Security",
+      "sub_categorie": "Cybersecurity"
+    },
+    {
+      "id": 9,
+      "title": "Cloud Computing with AWS",
+      "img": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg",
+      "description": "Learn cloud computing fundamentals with AWS services.",
+      "date": "15 April 2025, 10:00",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "Jeff Bezos",
+        "rate": 4.6,
+        "totalReview": 300
+      },
+      "categorie": "Cloud Computing",
+      "sub_categorie": "AWS"
+    },
+    {
+      "id": 10,
+      "title": "Blockchain and Cryptocurrency",
+      "img": "https://images.pexels.com/photos/11035591/pexels-photo-11035591.jpeg",
+      "description": "Understand blockchain technology and cryptocurrency trading.",
+      "date": "30 May 2025, 18:30",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "Satoshi Nakamoto",
+        "rate": 4.8,
+        "totalReview": 600
+      },
+      "categorie": "Finance",
+      "sub_categorie": "Blockchain"
+    },
+    {
+      "id": 11,
+      "title": "Advanced React Development",
+      "img": "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg",
+      "description": "Master React, Hooks, Context API, and performance optimization.",
+      "date": "20 June 2025, 14:00",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "Dan Abramov",
+        "rate": 4.9,
+        "totalReview": 800
+      },
+      "categorie": "Web Development",
+      "sub_categorie": "React.js"
+    },
+    {
+      "id": 12,
+      "title": "Digital Marketing Strategy",
+      "img": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+      "description": "Learn SEO, content marketing, and social media strategy.",
+      "date": "5 July 2025, 09:30",
+      "trainer": {
+        "img": "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg",
+        "name": "Neil Patel",
+        "rate": 4.7,
+        "totalReview": 550
+      },
+      "categorie": "Marketing",
+      "sub_categorie": "Digital Marketing"
     }
   ],
   "liveSession": {

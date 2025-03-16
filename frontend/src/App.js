@@ -9,6 +9,7 @@ import CourseMana from "./pages/manage/CourseManage";
 import UserManage from "./pages/manage/UserManage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import CourseList from "./pages/home/Course/CourseList";
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
             <Route path="/user-mana" element={<UserManage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/course-list" element={<CourseList />} />
           </Routes>
         </BrowserRouter>
       </Layout>
