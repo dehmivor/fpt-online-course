@@ -51,7 +51,9 @@ export default function UserManage() {
 
   return (
     <div className="p-6">
-      <h1 className="mb-4 text-2xl font-bold">User Management</h1>
+      <h1 className="mb-6 text-5xl font-bold text-center text-primary">
+        {"User management"}
+      </h1>
       <Table columns={columns} data={users} />
 
       <Dialog open={open} onOpenChange={setOpen}>

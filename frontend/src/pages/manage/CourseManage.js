@@ -41,7 +41,9 @@ function CourseMana() {
 
   return (
     <div className="p-6">
-      <h1 className="mb-4 text-3xl font-bold">Quản lý khóa học</h1>
+      <h1 className="mb-6 text-5xl font-bold text-center text-primary ">
+        {t("Course management")}
+      </h1>
 
       {/* Bảng hiển thị danh sách khóa học */}
       <Table
