@@ -2,21 +2,8 @@ const express = require("express");
 const User = require("../models/user.model");
 const router = express.Router();
 
-// Middleware to verify admin role
-const verifyAdmin = (req, res, next) => {
-  // Assuming you have authentication middleware that adds user info to req
-  if (req.user && req.user.role === "admin") {
-    next();
-  } else {
-    res.status(403).json({ message: "Access denied. Admin role required." });
-  }
-};
-
-// Apply admin verification to all routes
-router.use(verifyAdmin);
-
 // Get all users
-router.get("/users", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const users = await User.find().select("-password"); // Exclude password field
 

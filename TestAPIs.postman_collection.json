@@ -268,6 +268,172 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "POST /api/auth/login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"nguyenvana@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5003/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5003",
+          "path": ["api", "auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/users"
+      }
+    },
+    {
+      "name": "Get User by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/:id"
+      }
+    },
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n            \"id\": \"123\",\n            \"name\": \"John Doe\",\n            \"username\": \"johndoe\",\n            \"email\": \"john@example.com\",\n            \"password\": \"securepass\",\n            \"role\": \"user\",\n            \"profile\": {}\n          }"
+        },
+        "url": "{{base_url}}/create"
+      }
+    },
+    {
+      "name": "Update User",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n            \"name\": \"Updated Name\"\n          }"
+        },
+        "url": "{{base_url}}/:id"
+      }
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{base_url}}/:id"
+      }
+    },
+    {
+      "name": "Enroll User in Course",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n            \"course_id\": \"course123\",\n            \"progress\": 0,\n            \"completed\": false\n          }"
+        },
+        "url": "{{base_url}}/:id/courses"
+      }
+    },
+    {
+      "name": "Update Course Progress",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n            \"progress\": 50,\n            \"completed\": false\n          }"
+        },
+        "url": "{{base_url}}/:id/courses/:courseId"
+      }
+    },
+    {
+      "name": "Remove Course from User",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{base_url}}/:id/courses/:courseId"
+      }
+    },
+    {
+      "name": "Add Certificate to User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n            \"certificate_id\": \"cert123\",\n            \"course_id\": \"course123\",\n            \"issued_date\": \"2025-03-17\"\n          }"
+        },
+        "url": "{{base_url}}/:id/certificates"
+      }
+    },
+    {
+      "name": "Get User Activity Log",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/:id/activity"
+      }
+    },
+    {
+      "name": "Update User Profile",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n            \"profile\": {\"bio\": \"Updated bio\"}\n          }"
+        },
+        "url": "{{base_url}}/:id/profile"
+      }
     }
   ]
 }
