@@ -1,6 +1,6 @@
 // routes/userRoutes.js
 const express = require("express");
-const User = require("../models/user"); // Đảm bảo đúng đường dẫn tới model
+const User = require("../models/userSchema"); // Đảm bảo đúng đường dẫn tới model
 const router = express.Router();
 
 // Tạo mới người dùng (học viên)

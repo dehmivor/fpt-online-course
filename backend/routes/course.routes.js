@@ -1,6 +1,6 @@
 // routes/courseRoutes.js
 const express = require("express");
-const Course = require("../models/course"); // Đảm bảo đúng đường dẫn tới model
+const Course = require("../models/courseSchema"); // Đảm bảo đúng đường dẫn tới model
 const router = express.Router();
 
 // Tạo mới khóa học

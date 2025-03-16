@@ -1,6 +1,6 @@
 // routes/trainerRoutes.js
 const express = require("express");
-const Trainer = require("../models/trainer"); // Đảm bảo đúng đường dẫn tới model
+const Trainer = require("../models/trainerSchema"); // Đảm bảo đúng đường dẫn tới model
 const router = express.Router();
 
 // Tạo mới huấn luyện viên

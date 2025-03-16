@@ -1,6 +1,6 @@
 // routes/liveSessionRoutes.js
 const express = require("express");
-const LiveSession = require("../models/liveSession"); // Đảm bảo đúng đường dẫn tới model
+const LiveSession = require("../models/liveSessionSchema"); // Đảm bảo đúng đường dẫn tới model
 const router = express.Router();
 
 // Tạo mới buổi học trực tuyến

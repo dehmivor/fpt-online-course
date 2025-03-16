@@ -1,6 +1,6 @@
 // routes/feedbackRoutes.js
 const express = require("express");
-const Feedback = require("../models/feedback"); // Đảm bảo đúng đường dẫn tới model
+const Feedback = require("../models/feedbackSchema"); // Đảm bảo đúng đường dẫn tới model
 const router = express.Router();
 
 // Tạo mới phản hồi

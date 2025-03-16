@@ -1,6 +1,6 @@
 // routes/categoryRoutes.js
 const express = require("express");
-const Category = require("../models/category"); // Đảm bảo đúng đường dẫn tới model
+const Category = require("../models/categorySchema"); // Đảm bảo đúng đường dẫn tới model
 const router = express.Router();
 
 // Tạo mới danh mục

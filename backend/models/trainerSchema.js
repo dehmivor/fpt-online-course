@@ -9,6 +9,8 @@ const trainerSchema = new Schema({
   totalReview: { type: Number, required: true },
 });
 
+const Trainer = mongoose.model("Trainer", trainerSchema);
+
 // Exporting models
 module.exports = {
   Trainer,
