@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 function CourseDetail() {
   const navigate = useNavigate();
@@ -10,7 +11,29 @@ function CourseDetail() {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isEnrolled, setIsEnrolled] = useState(false);
+  const [enrollLoading, setEnrollLoading] = useState(false);
+  const [isEnrolled, setIsEnrolled] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      return (
+        user.enrolled_courses?.some((course) => course.course_id === id) ||
+        false
+      );
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      const enrolled = user.enrolled_courses?.some(
+        (course) => course.course_id === id
+      );
+      setIsEnrolled(enrolled);
+    }
+  }, [id]);
 
   useEffect(() => {
     const fetchCourseDetail = async () => {
@@ -22,8 +45,7 @@ function CourseDetail() {
           throw new Error(`HTTP error! Status: ${response.status}`);
 
         const data = await response.json();
-        setCourse(data.training); // Lấy dữ liệu từ key 'training'
-        console.log(data.training);
+        setCourse(data.training);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -49,6 +71,7 @@ function CourseDetail() {
     fetchCourseDetail();
     fetchFeedbacks();
 
+    // Kiểm tra nếu user đã đăng ký khóa học
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       const user = JSON.parse(storedUser);
@@ -58,6 +81,57 @@ function CourseDetail() {
       setIsEnrolled(enrolled);
     }
   }, [id]);
+
+  // Xử lý đăng ký khóa học
+  const handleEnroll = async () => {
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) {
+      alert("Please log in to enroll.");
+      return;
+    }
+
+    const user = JSON.parse(storedUser);
+    if (!user.id.startsWith("stu_")) {
+      alert("Only students can enroll in this course.");
+      return;
+    }
+
+    setEnrollLoading(true);
+
+    try {
+      const response = await fetch(
+        `http://localhost:5003/api/users/${user.id}/courses`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            student_id: user.id,
+            course_id: id,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Cập nhật localStorage với khóa học mới
+      const updatedUser = {
+        ...user,
+        enrolled_courses: [...(user.enrolled_courses || []), { course_id: id }],
+      };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+
+      setIsEnrolled(true);
+      toast.success("Enrollment successful!");
+    } catch (err) {
+      toast.error("Already enrolled. Please try again later.");
+    } finally {
+      setEnrollLoading(false);
+    }
+  };
 
   if (loading) return <p className="text-center text-primary">Loading...</p>;
   if (error)
@@ -114,13 +188,19 @@ function CourseDetail() {
             </div>
             <button
               className="w-full py-3 font-semibold text-white rounded-md bg-primary hover:bg-primary-dark"
-              onClick={() => navigate("/course-module")}
+              onClick={
+                isEnrolled ? () => navigate("/course-module") : handleEnroll
+              }
+              disabled={enrollLoading}
             >
-              {isEnrolled ? t("Continue") : t("Enroll Now")}
+              {enrollLoading
+                ? "Processing..."
+                : isEnrolled
+                ? t("Continue")
+                : t("Enroll Now")}
             </button>
           </div>
 
-          {/* Right Column: Feedback Section */}
           <div className="flex-1 p-8 overflow-y-auto border-l border-gray-200">
             <h2 className="mb-4 text-2xl font-bold">{t("Student Feedback")}</h2>
             {feedbacks.length > 0 ? (
