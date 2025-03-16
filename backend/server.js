@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const listEndpoints = require("express-list-endpoints"); // Import thư viện liệt kê endpoints
 
 dotenv.config(); // Đọc biến môi trường từ file .env
 
@@ -21,13 +22,16 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("Error connecting to MongoDB:", err));
 
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 // Routes
 // Các route riêng biệt sẽ được import từ các file khác nhau.
 app.use("/api/auth", require("./routes/auth.routes")); // Route cho authentication
 app.use("/api/feedbacks", require("./routes/feedback.routes")); // Route cho feedback
 app.use("/api/categories", require("./routes/categorie.routes")); // Route cho category
 app.use("/api/live-sessions", require("./routes/livesession.routes")); // Route cho live session
-app.use("/api/training", require("./routes/training.routes")); // Route cho live session
+app.use("/api/training", require("./routes/training.routes")); // Route cho training
 
 // Middleware xử lý lỗi 404 (Nếu route không tồn tại)
 app.use((req, res, next) => {
@@ -36,15 +40,21 @@ app.use((req, res, next) => {
   next(error);
 });
 
-// Middleware xử lý lỗi toàn cục (có thể thêm nhiều logic ở đây)
+// Middleware xử lý lỗi toàn cục
 app.use((error, req, res, next) => {
   res.status(error.status || 500).json({
     message: error.message || "Internal Server Error",
   });
 });
 
+// Liệt kê các endpoint đã đăng ký trước khi server bắt đầu lắng nghe
+console.log("Danh sách API endpoints:");
+console.log(listEndpoints(app));
+
 // Lắng nghe yêu cầu trên cổng
-const PORT = process.env.PORT || 5003; // Nếu không có PORT trong file .env, sẽ dùng 5000
+const PORT = process.env.PORT || 5003; // Nếu không có PORT trong file .env, sẽ dùng 5003
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;

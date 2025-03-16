@@ -4,12 +4,12 @@ import MainHero from "../../assets/img/images/main-hero1.PNG";
 
 function Login() {
   const { t, i18n } = useTranslation();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
+    console.log("Username:", username, "Password:", password);
     // Xử lý đăng nhập
   };
 
@@ -28,10 +28,10 @@ function Login() {
           </h1>
           <form className="w-full md:w-3/4" onSubmit={handleSubmit}>
             <input
-              type="email"
-              placeholder={t("email")}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="username"
+              placeholder={t("username")}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
               className="block w-full p-3 mb-4 border rounded-md shadow-sm focus:ring focus:ring-primary focus:outline-none"
             />
