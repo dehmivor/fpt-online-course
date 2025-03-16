@@ -5,34 +5,66 @@ const User = require("../models/user.model");
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-  const { username, password, email, name, role, profile } = req.body;
-
-  const existingUser = await User.findOne({ email });
-  if (existingUser) {
-    return res.status(400).json({ error: "Email already exists" });
-  }
-
   try {
-    // Ensure profile is an object (optional but good practice)
-    const profileData = profile || {};
+    const { username, name, email, password, role, profile } = req.body;
 
-    // Hash the password before saving
+    // Kiểm tra bắt buộc
+    if (!username || !email || !password || !name) {
+      return res
+        .status(400)
+        .json({ error: "Username, email, password, and name are required" });
+    }
+
+    // Kiểm tra email đã tồn tại chưa
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail) {
+      return res.status(400).json({ error: "Email already exists" });
+    }
+
+    // Kiểm tra username đã tồn tại chưa
+    const existingUsername = await User.findOne({ username });
+    if (existingUsername) {
+      return res.status(400).json({ error: "Username already exists" });
+    }
+
+    // Mã hóa mật khẩu
     const hashedPassword = await bcrypt.hash(password, 10);
+    const lastUser = await User.findOne().sort({ id: -1 }); // Lấy user có id lớn nhất
 
-    // Create a new user
+    // Lấy phần số từ id (nếu có), nếu không có thì bắt đầu từ 1
+    let newNumber = 1;
+    if (lastUser) {
+      const lastId = lastUser.id; // Ví dụ: "stu_001"
+      const match = lastId.match(/\d+/); // Tìm số trong chuỗi
+      if (match) {
+        newNumber = parseInt(match[0], 10) + 1; // Chuyển sang số và cộng thêm 1
+      }
+    }
+
+    const newId = `stu_${newNumber.toString().padStart(3, "0")}`; // Định dạng thành "stu_XXX"
+
+    // Tạo User mới
     const newUser = new User({
-      id: username, // username as 'id'
+      id: newId,
+      username, // Không đặt `id: username`, vì Mongoose sẽ tự tạo `_id`
       name,
       email,
       password: hashedPassword,
       role,
-      profile: profileData, // Save the profile if provided
-      enrolled_courses: [], // Empty courses array (will be added later)
-      certificates: [], // Empty certificates array (can be populated later)
-      activity_log: [], // Empty activity log
+      profile: {
+        age: profile?.age || null,
+        gender: profile?.gender || null,
+        university: profile?.university || null,
+        major: profile?.major || null,
+        year: profile?.year || null,
+        gpa: profile?.gpa || null,
+      },
+      enrolled_courses: [],
+      certificates: [],
+      activity_log: [],
     });
 
-    // Save the user to the database
+    // Lưu vào database
     await newUser.save();
 
     res.status(201).json({ message: "User created successfully" });
