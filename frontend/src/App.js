@@ -11,6 +11,8 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import CourseList from "./pages/home/Course/CourseList";
 import CourseDetail from "./pages/home/Course/CourseDetail";
+import RecentCourse from "./pages/home/Course/RecentCourse";
+import CourseModule from "./pages/home/Course/CourseModule";
 
 function App() {
   return (
@@ -72,6 +74,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/course" element={<CourseList />} />
             <Route path="/course/:id" element={<CourseDetail />} />
+            <Route path="/recent" element={<RecentCourse />} />
+            <Route path="/module" element={<CourseModule />} />
           </Routes>
         </Layout>
       </BrowserRouter>

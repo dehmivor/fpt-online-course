@@ -13,7 +13,21 @@
         "totalReview": 150
       },
       "categorie": "Programming",
-      "sub_categorie": "Web Development"
+      "sub_categorie": "Web Development",
+      "videos": [
+        {
+          "id": "video_001",
+          "title": "Introduction to the course",
+          "duration": "10 min",
+          "url": "http://localhost:3008/videos/intro.mp4"
+        },
+        {
+          "id": "video_002",
+          "title": "Lesson 1: Basics of React",
+          "duration": "20 min",
+          "url": "http://localhost:3008/videos/react-basics.mp4"
+        }
+      ]
     },
     {
       "id": 2,
@@ -28,7 +42,21 @@
         "totalReview": 38
       },
       "categorie": "Business and Finance",
-      "sub_categorie": "Data Analyst"
+      "sub_categorie": "Data Analyst",
+      "videos": [
+        {
+          "id": "video_001",
+          "title": "Introduction to the course",
+          "duration": "10 min",
+          "url": "http://localhost:3008/videos/intro.mp4"
+        },
+        {
+          "id": "video_002",
+          "title": "Lesson 1: Basics of React",
+          "duration": "20 min",
+          "url": "http://localhost:3008/videos/react-basics.mp4"
+        }
+      ]
     },
     {
       "id": 3,
@@ -270,19 +298,19 @@
       },
       "enrolled_courses": [
         {
-          "course_id": "course_101",
+          "course_id": "2",
           "progress": 75,
           "completed": false
         },
         {
-          "course_id": "course_202",
+          "course_id": "1",
           "progress": 100,
           "completed": true
         }
       ],
       "certificates": [
         {
-          "certificate_id": "cert_001",
+          "certificate_id": "2",
           "course_id": "course_202",
           "issued_date": "2024-01-15"
         }
@@ -291,12 +319,12 @@
         {
           "timestamp": "2024-03-15T10:30:00Z",
           "action": "completed_quiz",
-          "course_id": "course_101"
+          "course_id": "1"
         },
         {
           "timestamp": "2024-03-14T15:45:00Z",
           "action": "watched_video",
-          "course_id": "course_101"
+          "course_id": "2"
         }
       ]
     },
