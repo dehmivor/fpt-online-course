@@ -16,6 +16,7 @@ import CourseModule from "./pages/home/Course/CourseModule";
 import CourseForm from "./pages/manage/CourseForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminPage from "./pages/manage/AdminPage";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Notfound />} />
+            <Route path="/admin-page" element={<AdminPage />} />
             <Route path="/course-mana" element={<CourseMana />} />
             <Route path="/user-mana" element={<UserManage />} />
             <Route path="/login" element={<Login />} />

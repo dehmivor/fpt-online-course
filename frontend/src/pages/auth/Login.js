@@ -9,6 +9,7 @@ function Login() {
   const { t, i18n } = useTranslation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Username:", username, "Password:", password);
@@ -40,15 +41,31 @@ function Login() {
         return;
       }
 
-      // Nếu đăng nhập thành công, hiển thị toast thành công
-      toast.success("Login successful!");
-      console.log("Login success:", data);
-      navigate("/recent");
       // Lưu token vào localStorage
       localStorage.setItem("token", data.token);
-      localStorage.setItem("token", data.token);
+
+      // Lưu thông tin người dùng
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // Kiểm tra role và điều hướng phù hợp
+      const userRole = data.user.role;
+
+      // Hiển thị toast thành công
+      toast.success("Login successful!");
+      console.log("Login success:", data);
+
+      // Điều hướng dựa trên role
+      if (userRole === "admin") {
+        navigate("/admin-page");
+      } else if (userRole === "student") {
+        navigate("/recent");
+      } else {
+        // Điều hướng mặc định nếu có role khác
+        navigate("/recent");
+      }
     } catch (error) {
       console.error("Error during login:", error);
+      toast.error("Connection error. Please try again later.");
     }
   };
 

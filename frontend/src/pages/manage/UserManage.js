@@ -14,7 +14,7 @@ export default function UserManage() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:3008/users")
+    fetch("http://localhost:5003/api/users")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error("Error fetching users:", err));

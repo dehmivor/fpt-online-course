@@ -32,6 +32,7 @@ app.use("/api/feedbacks", require("./routes/feedback.routes")); // Route cho fee
 app.use("/api/categories", require("./routes/categorie.routes")); // Route cho category
 app.use("/api/live-sessions", require("./routes/livesession.routes")); // Route cho live session
 app.use("/api/training", require("./routes/training.routes")); // Route cho training
+app.use("/api/users", require("./routes/manage.routes")); // Route cho user
 
 // Middleware xử lý lỗi 404 (Nếu route không tồn tại)
 app.use((req, res, next) => {
