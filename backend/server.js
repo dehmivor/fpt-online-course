@@ -24,12 +24,10 @@ mongoose
 // Routes
 // Các route riêng biệt sẽ được import từ các file khác nhau.
 app.use("/api/auth", require("./routes/auth.routes")); // Route cho authentication
-app.use("/api/trainers", require("./routes/trainer.routes")); // Route cho trainer
-app.use("/api/courses", require("./routes/course.routes")); // Route cho course
-app.use("/api/users", require("./routes/user.routes")); // Route cho user
 app.use("/api/feedbacks", require("./routes/feedback.routes")); // Route cho feedback
-app.use("/api/categories", require("./routes/category.routes")); // Route cho category
+app.use("/api/categories", require("./routes/categorie.routes")); // Route cho category
 app.use("/api/live-sessions", require("./routes/livesession.routes")); // Route cho live session
+app.use("/api/training", require("./routes/training.routes")); // Route cho live session
 
 // Middleware xử lý lỗi 404 (Nếu route không tồn tại)
 app.use((req, res, next) => {
