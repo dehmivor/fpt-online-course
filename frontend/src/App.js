@@ -17,6 +17,7 @@ import CourseForm from "./pages/manage/CourseForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminPage from "./pages/manage/AdminPage";
+import FeedbackManage from "./pages/manage/FeedbackManage";
 
 function App() {
   return (
@@ -83,6 +84,7 @@ function App() {
             <Route path="/recent" element={<RecentCourse />} />
             <Route path="/course-module" element={<CourseModule />} />
             <Route path="/create-course" element={<CourseForm />} />
+            <Route path="/feedbacks-mana" element={<FeedbackManage />} />
           </Routes>
         </Layout>
       </BrowserRouter>

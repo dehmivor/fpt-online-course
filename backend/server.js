@@ -12,6 +12,12 @@ const app = express();
 // Middleware
 app.use(express.json()); // Dùng để phân tích cú pháp JSON trong request body
 app.use(cors()); // Cho phép truy cập từ các domain khác
+app.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.sendStatus(200);
+});
 
 // Kết nối với MongoDB
 mongoose

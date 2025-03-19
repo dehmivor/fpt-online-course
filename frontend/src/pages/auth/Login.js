@@ -58,7 +58,18 @@ function Login() {
       if (userRole === "admin") {
         navigate("/admin-page");
       } else if (userRole === "student") {
-        navigate("/recent");
+        // Kiểm tra nếu có URL trước đó
+        const previousUrl = localStorage.getItem("previousUrl");
+
+        if (previousUrl) {
+          // Xóa URL để tránh lưu trữ lâu dài
+          localStorage.removeItem("previousUrl");
+          // Điều hướng về lại trang trước đó
+          window.location.href = previousUrl;
+        } else {
+          // Nếu không có URL trước đó, điều hướng về trang mặc định (home chẳng hạn)
+          window.location.href = "/";
+        }
       } else {
         // Điều hướng mặc định nếu có role khác
         navigate("/recent");
