@@ -48,7 +48,7 @@ router.post("/create", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     // Retrieve all feedbacks and include createdAt field
-    const feedbacks = await Feedback.find({}, "content createdAt");
+    const feedbacks = await Feedback.find({});
 
     if (feedbacks.length === 0) {
       return res.status(404).json({ message: "No feedbacks found" });
