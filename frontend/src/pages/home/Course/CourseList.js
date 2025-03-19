@@ -112,18 +112,18 @@ function CourseList() {
         {t("Course")}
       </h1>
 
-      <div className="flex flex-col w-full gap-4 mb-6 md:flex-row">
+      <div className="flex flex-col w-full gap-3 mb-9 md:flex-row">
         <input
           type="text"
           placeholder="Search by name..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md md:w-1/4"
+          className="w-full p-6 rounded-md shadow-md md:w-1/2 md:w-1/5"
         />
         <select
           value={categorie}
           onChange={(e) => setCategorie(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md md:w-1/4"
+          className="w-full p-2 rounded-md shadow-md md:w-1/2 md:w-1/5"
         >
           <option value="">Select categorie</option>
           {uniqueCategories.map((cat) => (
@@ -135,7 +135,7 @@ function CourseList() {
         <select
           value={trainer}
           onChange={(e) => setTrainer(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md md:w-1/4"
+          className="w-full p-2 rounded-md shadow-md md:w-1/2 md:w-1/5"
         >
           <option value="">Select Trainer</option>
           {uniqueTrainers.map((trainer) => (
@@ -147,7 +147,7 @@ function CourseList() {
         <select
           value={subCategorie}
           onChange={(e) => setSubCategorie(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md md:w-1/4"
+          className="w-full p-2 rounded-md shadow-md md:w-1/2 md:w-1/5"
         >
           <option value="">Select Sub-categorie</option>
           {uniqueSubCategories.map((subCat) => (
@@ -158,7 +158,7 @@ function CourseList() {
         </select>
         <button
           onClick={handleResetFilters}
-          className="px-4 py-3 text-sm font-medium text-white rounded-md bg-primary hover:text-gray-light max-w-1/2 xl:px-6"
+          className="px-4 py-3 text-sm font-medium text-white rounded-md md:w-1/4 bg-primary hover:text-gray-light max-w-1/2 xl:px-6"
         >
           Clear Filters
         </button>
@@ -170,7 +170,7 @@ function CourseList() {
             <div
               key={item._id}
               onClick={() => navigate(`/course/${item.id}`)}
-              className="cursor-pointer"
+              className="cursor-pointer w-full max-w-[400px] h-[500px]"
             >
               <Card data={item} />
             </div>

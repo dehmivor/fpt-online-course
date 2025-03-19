@@ -32,7 +32,10 @@ function CourseDetail() {
     const profile = JSON.parse(localStorage.getItem("user"));
 
     if (!profile) {
-      return alert("Vui lòng đăng nhập trước khi gửi feedback!");
+      alert("Không thể gửi feedback!");
+      toast.error("Vui lòng đăng nhập trước khi gửi feedback!");
+      navigate(`/login`);
+      return;
     }
 
     const newFeedback = {
@@ -80,7 +83,7 @@ function CourseDetail() {
       setReview(5);
     } catch (error) {
       console.error("Lỗi:", error);
-      alert("Có lỗi xảy ra, vui lòng thử lại!");
+      toast.info("Vui lòng điền đủ thông tin các trường!");
     }
   };
 
@@ -135,7 +138,6 @@ function CourseDetail() {
     fetchCourseDetail();
     fetchFeedbacks();
 
-    // Kiểm tra nếu user đã đăng ký khóa học
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       const user = JSON.parse(storedUser);
@@ -146,14 +148,12 @@ function CourseDetail() {
     }
   }, [id]);
 
-  // Xử lý đăng ký khóa học
   const handleEnroll = async () => {
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
       alert("Please log in to enroll.");
-      // Lưu URL hiện tại trước khi chuyển hướng đến trang login
       localStorage.setItem("previousUrl", window.location.href);
-      window.location.href = "/login"; // Điều hướng đến trang login
+      window.location.href = "/login";
       navigate("/login");
       return;
     }
@@ -185,7 +185,6 @@ function CourseDetail() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Cập nhật localStorage với khóa học mới
       const updatedUser = {
         ...user,
         enrolled_courses: [...(user.enrolled_courses || []), { course_id: id }],
@@ -211,7 +210,6 @@ function CourseDetail() {
     <section className="w-full min-h-screen p-8 bg-gray-100">
       <div className="h-full max-w-6xl mx-auto bg-white rounded-lg shadow-lg">
         <div className="flex flex-col h-full md:flex-row">
-          {/* Left Column: Course Image and Details */}
           <div className="flex-1 p-8">
             <div className="flex justify-center mb-6">
               <img
