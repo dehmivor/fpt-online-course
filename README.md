@@ -9,6 +9,8 @@ cổng back end chạy 5003
 cổng json chạy 3008
 
 vẫn đang trong quá trình cập nhật nên 1 số chức năng chưa khả dụng
+
+
 màn hình role guest:
 ![Screenshot 2025-03-24 230617](https://github.com/user-attachments/assets/8b2d70b8-03b7-4f23-be23-ef192e3b98ce)
 
